@@ -202,6 +202,31 @@ nav .nav-inner {
   text-align: center;
 }
 
+.profile-header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.profile-header .profile-panel {
+  padding: 1.5rem 1rem;
+}
+
+.profile-header .profile-frame {
+  width: 180px;
+  height: 180px;
+}
+
+.profile-header .profile-img {
+  width: 150px;
+  height: 150px;
+}
+
+.profile-header .profile-name {
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+}
+
 .profile-summary {
   display: grid;
   gap: 1rem;
@@ -422,61 +447,10 @@ nav .nav-inner {
   }
 }
 
-html[data-theme="light"] {
-  color-scheme: light;
-}
-html[data-theme="light"] body {
-  background: radial-gradient(circle at top left, rgba(56, 92, 184, 0.12), transparent 24%),
-              linear-gradient(180deg, #f6f8ff 0%, #eaf2ff 100%);
-  color: #102a60;
-}
-html[data-theme="light"] body::before {
-  background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), transparent 30%, rgba(14, 165, 233, 0.04));
-}
-html[data-theme="light"] nav {
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom-color: rgba(112, 144, 255, 0.18);
-}
-html[data-theme="light"] .brand,
-html[data-theme="light"] .nav-links a {
-  color: #102a60;
-}
-html[data-theme="light"] .nav-links a:hover {
-  color: #1b2f65;
-}
-html[data-theme="light"] .hero-card,
-html[data-theme="light"] .section-card,
-html[data-theme="light"] .small-card,
-html[data-theme="light"] .portfolio-card,
-html[data-theme="light"] .gallery-card {
-  background: rgba(255,255,255,0.94);
-  border-color: rgba(112, 144, 255, 0.16);
-  box-shadow: 0 24px 80px rgba(15, 48, 107, 0.08);
-}
-html[data-theme="light"] .details-list,
-html[data-theme="light"] .portfolio-card p,
-html[data-theme="light"] .gallery-meta p {
-  color: #33406b;
-}
-html[data-theme="light"] .footer {
-  color: #5a6c92;
-}
-html[data-theme="light"] .badge {
-  background: rgba(10, 242, 255, 0.16);
-  color: #0f4370;
-}
-html[data-theme="light"] .profile-name,
-html[data-theme="light"] .hero-title,
-html[data-theme="light"] .section h2 {
-  color: #102a60;
-}
+
 .nav-actions {
   display: flex;
   align-items: center;
-}
-.theme-toggle {
-  min-width: 96px;
-  padding: 0.75rem 1rem;
 }
 .hamburger {
   display: flex;
@@ -534,9 +508,6 @@ html[data-theme="light"] .section h2 {
     display: none;
   }
   .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
     left: 0;
     right: 0;
     background: rgba(0, 0, 0, 0.95);
@@ -563,5 +534,145 @@ html[data-theme="light"] .section h2 {
   }
   .hero {
     grid-template-columns: 1fr;
+  }
+}
+  
+/* VARIABEL DAN RESET DASAR */
+:root {
+  --muted: #5b6e8c;
+  --card-bg: #ffffff;
+  --soft-gray: #f8fafc;
+  --border-light: #e9edf2;
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 25px -12px rgba(0, 0, 0, 0.1), 0 8px 12px -6px rgba(0, 0, 0, 0.05);
+  --transition: all 0.25s ease;
+}
+
+/* LAYOUT DASAR (agar kotak persegi panjang berada di tengah) */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  background: linear-gradient(145deg, #eef2f7 0%, #d9e0e8 100%);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* KOTAK PERSEGI PANJANG UTAMA – SISI TUMPUL */
+.contact-card {
+  max-width: 860px;
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 36px;    /* sudut tumpul yang tegas, tetap persegi panjang */
+  box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+}
+
+.contact-section {
+  padding: 2.2rem 2rem 2.5rem 2rem;
+}
+
+h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #1f2b38, #2c3e4e);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0.75rem;
+  border-left: 5px solid #3b82f6;
+  padding-left: 1.2rem;
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 550px;
+  padding-left: 1.2rem;
+  border-left: 2px solid #e2e8f0;
+}
+
+/* GRID TOMBOL (masing-masing kotak persegi panjang & dapat diklik) */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+/* SETIAP LINK = KOTAK PERSEGI PANJANG DENGAN SUDUT TUMPUL, BISA DIKLIK */
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  background: var(--soft-gray);
+  border: 1px solid var(--border-light);
+  border-radius: 28px;      /* sudut tumpul, bentuk persegi panjang */
+  padding: 1rem 0.8rem;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1f2a3e;
+  transition: var(--transition);
+  cursor: pointer;
+  letter-spacing: -0.2px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Efek hover yang lebih hidup */
+.social-link:hover {
+  transform: translateY(-3px);
+  background: white;
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-hover);
+  color: #0f172a;
+}
+
+/* Efek klik (active) */
+.social-link:active {
+  transform: translateY(1px);
+  transition: 0.05s linear;
+}
+
+/* Ikon diperbesar sedikit dan beri warna khas tiap platform (opsional) */
+.social-link i {
+  font-size: 1.6rem;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover i {
+  transform: scale(1.05);
+}
+
+/* Warna ikon spesifik (opsional, mempercantik) */
+.social-link:first-child i { color: #E4405F; }      /* Instagram */
+.social-link:nth-child(2) i { color: #25D366; }     /* WhatsApp */
+.social-link:nth-child(3) i { color: #0A66C2; }     /* LinkedIn */
+.social-link:nth-child(4) i { color: #ea4335; }     /* Lokasi (maps) */
+
+/* Responsif: untuk layar kecil, tombol tetap nyaman */
+@media (max-width: 560px) {
+  .contact-section {
+    padding: 1.8rem 1.2rem 2rem 1.2rem;
+  }
+  .social-link {
+    padding: 0.9rem 0.5rem;
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+    padding-left: 0.9rem;
+  }
+  .section-intro {
+    font-size: 0.9rem;
+    padding-left: 0.9rem;
   }
 }
